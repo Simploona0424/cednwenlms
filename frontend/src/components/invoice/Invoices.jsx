@@ -27,7 +27,7 @@ function Invoices() {
         setExpandedRow((prev) => (prev === index ? null : index));
     };
     const fetchInvoiceData = async () => {
-        const response = await axios.get("http://localhost:5000/api/getinvoice")
+        const response = await axios.get("https://cedwenlms.onrender.com/api/getinvoice")
         setInvoices(response.data);
     }
     useEffect(() => {
@@ -50,7 +50,7 @@ function Invoices() {
 
     const handleDeleteInvoice = async (id) => {
         try {
-            await axios.delete(`http://localhost:5000/api/deleteinvoice/${id}`);
+            await axios.delete(`https://cedwenlms.onrender.com/api/deleteinvoice/${id}`);
             setInvoices((prev) => prev.filter(user => user._id !== id));
             setShowConfirm(false);
         } catch (error) {
