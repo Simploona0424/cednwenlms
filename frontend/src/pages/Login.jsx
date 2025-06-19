@@ -24,14 +24,14 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const user = adminData.find(
-      (admin) => admin.emailId === email && admin.password === password
-    );
-    console.log(user);
-    if (!user) {
-      alert("Email or Password are not found");
-      return;
-    }
+    // const user = adminData.find(
+    //   (admin) => admin.emailId === email && admin.password === password
+    // );
+    // console.log(user);
+    // if (!user) {
+    //   alert("Email or Password are not found");
+    //   return;
+    // }
 
     try {
       await axios.post("https://cedwenlms.onrender.com/api/login", { email, password });
