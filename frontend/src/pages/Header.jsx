@@ -48,11 +48,11 @@ function Header({ name }) {
         >
           <div className="text-sm max-xl:text-xs">
             <span className="font-normal flex justify-center gap-2 items-center text-sm xl:text-base  text-gray-800">
-              <img
+              {/* <img
                 src={userimage}
                 alt="User Profile"
                 className=" h-8  w-8 rounded-full object-cover border border-gray-300"
-              />
+              /> */}
               {userName}
             </span>
           </div>
