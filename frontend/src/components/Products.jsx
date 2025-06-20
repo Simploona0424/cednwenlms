@@ -25,7 +25,7 @@ function Products() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/getProduct");
+        const res = await axios.get("https://cednwenlms.onrender.com/api/getProduct");
         setUsedata(res.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -77,7 +77,7 @@ function Products() {
         };
 
         await axios.put(
-          `http://localhost:5000/api/updateProduct/${id}`,
+          `https://cednwenlms.onrender.com/api/updateProduct/${id}`,
           updatedProduct
         );
         setUsedata((prev) =>
@@ -94,7 +94,7 @@ function Products() {
       try {
 
         const res = await axios.post(
-          "http://localhost:5000/api/postProduct",
+          "https://cednwenlms.onrender.com/api/postProduct",
           payload
         );
         console.log(res.data)
@@ -127,7 +127,7 @@ function Products() {
   const handleDelete = async (index) => {
     try {
       const id = userdata[index]._id;
-      await axios.delete(`http://localhost:5000/api/deleteProduct/${id}`);
+      await axios.delete(`https://cednwenlms.onrender.com/api/deleteProduct/${id}`);
       setUsedata((prev) => prev.filter((_, i) => i !== index));
       setShowConfirm(false);
     } catch (error) {
