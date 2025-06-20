@@ -27,7 +27,7 @@ function EditWonData() {
         Invoice: orderData?.Invoice || "",
         Certificate: orderData?.Certificate || "",
     });
-  
+    console.log("formData.InvoiceNote", formData.InvoiceNote)
     const numberToWords = (num) => {
         if (num === 0) return "Zero Rupees";
 
@@ -139,14 +139,14 @@ function EditWonData() {
         }
         try {
             await axios.put(
-                `https://cedwenlms.onrender.com/api/updatewonData/${id}`,
+                `http://localhost:5000/api/updatewonData/${id}`,
                 formDataObj, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
             }
             );
-          
+            console.log("Data update successful");
             toast.success("Proposal Edit Successfully...", { autoClose: 2000 });
             navigate("/orders");
         } catch (error) {
@@ -157,7 +157,7 @@ function EditWonData() {
       useEffect(() => {
             const fetchData = async () => {
                 try {
-                    const res = await axios.get("https://cedwenlms.onrender.com/api/cmdata");
+                    const res = await axios.get("http://localhost:5000/api/cmdata");
                     setCmData(res.data);
                 } catch (error) {
                     console.error("Error fetching data:", error);

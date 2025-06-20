@@ -12,7 +12,7 @@ function Login() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("https://cedwenlms.onrender.com/api/adminData");
+        const res = await axios.get("http://localhost:5000/api/adminData");
         setadminData(res.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -20,22 +20,22 @@ function Login() {
     };
     fetchData();
   }, []);
-
+console.log("kk",adminData)
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // const user = adminData.find(
-    //   (admin) => admin.emailId === email && admin.password === password
-    // );
-    // console.log(user);
-    // if (!user) {
-    //   alert("Email or Password are not found");
-    //   return;
-    // }
+    const user = adminData.find(
+      (admin) => admin.emailId === email && admin.password === password
+    );
+    console.log(user);
+    if (!user) {
+      alert("Email or Password are not found");
+      return;
+    }
 
     try {
-      await axios.post("https://cedwenlms.onrender.com/api/login", { email, password });
-     
+      await axios.post("http://localhost:5000/api/login", { email, password });
+      console.log("successfull");
       localStorage.setItem("userName", user.userName);
       localStorage.setItem("imageURL", user.imagefile);
       // Navigate to dashboard with user role

@@ -25,7 +25,7 @@ function Products() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("https://cedwenlms.onrender.com/api/getProduct");
+        const res = await axios.get("http://localhost:5000/api/getProduct");
         setUsedata(res.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -77,7 +77,7 @@ function Products() {
         };
 
         await axios.put(
-          `https://cedwenlms.onrender.com/api/updateProduct/${id}`,
+          `http://localhost:5000/api/updateProduct/${id}`,
           updatedProduct
         );
         setUsedata((prev) =>
@@ -94,10 +94,10 @@ function Products() {
       try {
 
         const res = await axios.post(
-          "https://cedwenlms.onrender.com/api/postProduct",
+          "http://localhost:5000/api/postProduct",
           payload
         );
-       
+        console.log(res.data)
         setUsedata((prev) => [...prev, res.data]);
         setIsOpen(false);
       } catch (error) {
@@ -127,7 +127,7 @@ function Products() {
   const handleDelete = async (index) => {
     try {
       const id = userdata[index]._id;
-      await axios.delete(`https://cedwenlms.onrender.com/api/deleteProduct/${id}`);
+      await axios.delete(`http://localhost:5000/api/deleteProduct/${id}`);
       setUsedata((prev) => prev.filter((_, i) => i !== index));
       setShowConfirm(false);
     } catch (error) {
@@ -464,22 +464,22 @@ function Products() {
                       key={user._id}
                       className="border-t hover:bg-[#FFF5F2] border-gray-300"
                     >
-                      <td className="px-2 py-2 leading-3 whitespace-nowrap  text-sm max-xl:text-xs text-[#5A607F] border-b border-gray-300">
+                      <td className="px-2 py-[0.35rem] leading-3 whitespace-nowrap  text-sm max-xl:text-xs text-[#5A607F] border-b border-gray-300">
                         {startIndex + index + 1}
                       </td>
-                      <td className="px-2 py-2 leading-3 whitespace-nowrap text-sm max-xl:text-xs text-[#5A607F] border-b border-gray-300">
+                      <td className="px-2 py-[0.35rem] leading-3 whitespace-nowrap text-sm max-xl:text-xs text-[#5A607F] border-b border-gray-300">
                         {user.productName}
                       </td>
-                      <td className="px-2 py-2 leading-3 whitespace-nowrap text-sm max-xl:text-xs text-[#5A607F] border-b border-gray-300">
+                      <td className="px-2 py-[0.35rem] leading-3 whitespace-nowrap text-sm max-xl:text-xs text-[#5A607F] border-b border-gray-300">
                         {user.description}
                       </td>
-                      <td className="px-2 py-2 leading-3 whitespace-nowrap text-sm max-xl:text-xs text-[#5A607F] border-b border-gray-300">
+                      <td className="px-2 py-[0.35rem] leading-3 whitespace-nowrap text-sm max-xl:text-xs text-[#5A607F] border-b border-gray-300">
                         {user.licenseType}
                       </td>
-                      <td className="px-2 py-2 leading-3 whitespace-nowrap text-sm max-xl:text-xs text-[#5A607F] border-b border-gray-300">
+                      <td className="px-2 py-[0.35rem] leading-3 whitespace-nowrap text-sm max-xl:text-xs text-[#5A607F] border-b border-gray-300">
                         {user.skuId}
                       </td>
-                      <td className="px-2 py-2 leading-3 whitespace-nowrap text-sm max-xl:text-xs text-[#5A607F] border-b border-gray-300">
+                      <td className="px-2 py-[0.35rem] leading-3 whitespace-nowrap text-sm max-xl:text-xs text-[#5A607F] border-b border-gray-300">
                         {user.sellingPrice}
                       </td>
                       {/* <td className="px-2 py-[0.35rem] leading-3 whitespace-nowrap text-sm max-xl:text-xs text-[#5A607F] border-b border-gray-300">
@@ -491,7 +491,7 @@ function Products() {
                           srcset=""
                         />
                       </td> */}
-                      <td className="px-2 py-2 leading-3  text-sm max-xl:text-xs whitespace-nowrap border-b text-center text-[#5A607F] border-gray-300">
+                      <td className="px-2 leading-3  text-sm max-xl:text-xs whitespace-nowrap border-b text-center text-[#5A607F] border-gray-300">
                         <button
                           onClick={(e) => {
                             e.stopPropagation();

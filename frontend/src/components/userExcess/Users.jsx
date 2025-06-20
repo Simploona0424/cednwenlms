@@ -34,11 +34,11 @@ function Users() {
   const fetchData = async () => {
     try {
       const manageroleRes = await axios.get(
-        "https://cedwenlms.onrender.com/api/manageroleData"
+        "http://localhost:5000/api/manageroleData"
       );
-      const adminDataRes = await axios.get("https://cedwenlms.onrender.com/api/getUser");
-      const jobroleRes = await axios.get("https://cedwenlms.onrender.com/api/cmdata");
-      const imagesRes = await axios.get("https://cedwenlms.onrender.com/upload");
+      const adminDataRes = await axios.get("http://localhost:5000/api/getUser");
+      const jobroleRes = await axios.get("http://localhost:5000/api/cmdata");
+      const imagesRes = await axios.get("http://localhost:5000/upload");
       setManagerole(manageroleRes.data);
       setadminData(adminDataRes.data);
       setJobroledata(jobroleRes.data);
@@ -99,7 +99,7 @@ function Users() {
           // newFile,
         };
         const res = await axios.put(
-          `https://cedwenlms.onrender.com/api/updateUser/${userId}`,
+          `http://localhost:5000/api/updateUser/${userId}`,
           updatedProduct
         );
         const updatedAdminData = [...adminData];
@@ -109,7 +109,7 @@ function Users() {
       } else {
         // Add new user
         const res = await axios.post(
-          "https://cedwenlms.onrender.com/api/postUser",
+          "http://localhost:5000/api/postUser",
           payload
         );
         setadminData((prev) => [...prev, res.data]);
@@ -146,7 +146,7 @@ function Users() {
   const handleDelete = async (index) => {
     try {
       const id = adminData[index]._id;
-      await axios.delete(`https://cedwenlms.onrender.com/api/deleteUser/${id}`);
+      await axios.delete(`http://localhost:5000/api/deleteUser/${id}`);
       setadminData((prev) => prev.filter((_, i) => i !== index));
       setShowConfirm(false);
     } catch (error) {

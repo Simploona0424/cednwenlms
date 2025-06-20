@@ -54,7 +54,7 @@ function Proposals() {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get("https://cedwenlms.onrender.com/api/getNewproposal")
+      const res = await axios.get("http://localhost:5000/api/getNewproposal")
       setNewProposal(res.data)
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -76,9 +76,9 @@ function Proposals() {
 
   const handleDeleteProposal = async (id) => {
     try {
-      await axios.delete(`https://cedwenlms.onrender.com/api/deleteProposal/${id}`);
+      await axios.delete(`http://localhost:5000/api/deleteProposal/${id}`);
       fetchData();
-     
+      console.log("Proposal deleted successfully.");
       setShowConfirm(false);
       setDeleteIndex(null);
     } catch (error) {
